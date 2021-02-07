@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dice Roller</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+        body {
+            text-align: center;
+        }
+
+        .Title {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 28px;
+        }
+
+        .TotalDisplay h2 {
+            font-size: 36px;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+
+        .BigDataDisplay div {
+            border: 1px solid black;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        .BigDataDisplayButton {
+            font-size: 36px;
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-bottom: 20px;
+            width: 225px;
+            height: 65px;
+        }
+
+        .BigDataDisplay span {
+            border: 3px solid black;
+            height: 59px;
+            padding-top: 1px;
+            width: 60px;
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 52px;
+            margin: 10px;
+        }
+
+        .BlackBackground {
+            background-color: #666666;
+        }
+
+        .YellowBackground {
+            background-color: #dad600;
+        }
+
+        .WhiteBackground {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="Title">
+        <h1>Dice Roller</h1>
+    </div>
+    <div id="divDiceResults" class="BigDataDisplay">
+        <span class="BlackBackground" id="dice1">0</span>
+        <span class="YellowBackground" id="dice2">0</span>
+        <span class="WhiteBackground" id="dice3">0</span>
+    </div>
+    <div class="TotalDisplay">
+        <h2>Total:
+            <span id="total">00</span>
+        </h2>
+        <button class="BigDataDisplayButton" onclick="roll()">Roll</button>
+    </div>
+    <script>
+        function roll() {
+            switch (Math.floor((Math.random() * 6))) {
+                case 0:
+                    dice1 = 1;
+                    break;
+                case 1:
+                case 2:
+                    dice1 = 2;
+                    break;
+                case 3:
+                case 4:
+                case 5:
+                    dice1 = 3;
+                    break;
+            }
+
+            var dice2 = Math.floor((Math.random() * 6));
+            if (dice2 === 5) dice2 = 0;
+
+            var dice3 = Math.floor((Math.random() * 6));
+
+            document.getElementById("dice1").innerHTML = dice1.toString();
+            document.getElementById("dice2").innerHTML = dice2.toString();
+            document.getElementById("dice3").innerHTML = dice3.toString();
+            document.getElementById("total").innerHTML = (dice1 * 10 + dice2 + dice3).toString();
+        }
+    </script>
+</body>
+
+</html>
